@@ -1,9 +1,10 @@
 import { SendEmailDTO, EmailDeliveryKafkaTopic } from 'email-delivery-pkg';
-import { CorrelatedRequestDTO, CorrelatedKafkaResponse } from 'kafka-pkg';
+import { CorrelatedRequestDTO, CorrelatedKafkaResponse, CorrelatedRequestDTOSchema } from 'kafka-pkg';
 import { logger } from 'common-loggers-pkg';
+import { ZodError } from 'zod';
 
 import strategyRegistry from '@strategies/index';
-import { EmailProvider } from '@common/constants';
+import { EmailProvider, SendEmailDTOSchema } from '@common/constants';
 import EmailProviderStrategy from '@strategies/email-provider/email-provider.strategy';
 
 class EmailService {
@@ -13,6 +14,9 @@ class EmailService {
     let error: unknown | null = null;
 
     try {
+      CorrelatedRequestDTOSchema.parse(requestData);
+      SendEmailDTOSchema.parse(data);
+
       const emailProviderStrategy: EmailProviderStrategy = strategyRegistry.getStrategy(
         EmailProvider.Mailgun
       ) as EmailProviderStrategy;
