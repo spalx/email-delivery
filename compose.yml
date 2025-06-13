@@ -1,0 +1,34 @@
+services:
+  email-delivery:
+    build:
+      context: .
+      ssh:
+        - default
+    command: npm run dev
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    depends_on:
+      - email-delivery-bull-db
+    env_file:
+      - .env
+    networks:
+      - email-delivery-network
+      - kafka-network
+    restart: unless-stopped
+
+  email-delivery-bull-db:
+    image: redis:latest
+    command: ["redis-server", "--appendonly", "no", "--maxmemory-policy", "noeviction"]
+    volumes:
+      - ./bull_db_data:/data
+    networks:
+      - email-delivery-network
+      - kafka-network
+    restart: unless-stopped
+
+networks:
+  email-delivery-network:
+    driver: bridge
+  kafka-network:
+    external: true

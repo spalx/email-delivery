@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "types": ["node"],
+    "strict": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "@services/*": ["services/*"],
+      "@config/*": ["config/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@common/*": ["common/*"],
+      "@commands/*": ["commands/*"],
+      "@strategies/*": ["strategies/*"],
+      "@queues/*": ["queues/*"]
+    }
+  },
+  "include": ["src", "@types"],
+  "exclude": ["node_modules"]
+}
