@@ -3,9 +3,9 @@ import { CorrelatedRequestDTO, CorrelatedKafkaResponse, CorrelatedRequestDTOSche
 import { logger } from 'common-loggers-pkg';
 import { ZodError } from 'zod';
 
-import strategyRegistry from '@strategies/index';
-import { EmailProvider, SendEmailDTOSchema } from '@common/constants';
-import EmailProviderStrategy from '@strategies/email-provider/email-provider.strategy';
+import strategyRegistry from '@/strategies/index';
+import { EmailProvider, SendEmailDTOSchema } from '@/common/constants';
+import EmailProviderStrategy from '@/strategies/email-provider/email-provider.strategy';
 
 class EmailService {
   async sendEmail(requestData: CorrelatedRequestDTO<SendEmailDTO>): Promise<void> {

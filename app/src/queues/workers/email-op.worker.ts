@@ -3,9 +3,9 @@ import { CorrelatedRequestDTO } from 'kafka-pkg';
 import { SendEmailDTO } from 'email-delivery-pkg';
 import { logger } from 'common-loggers-pkg';
 
-import { bullDbConnection } from '@config/db.config';
-import { QUEUE_EMAIL_OP, EmailOpJobName } from '@common/constants';
-import emailService from '@services/email/email.service';
+import { bullDbConnection } from '@/config/db.config';
+import { QUEUE_EMAIL_OP, EmailOpJobName } from '@/common/constants';
+import emailService from '@/services/email/email.service';
 
 const jobHandlers: Record<string, (data: CorrelatedRequestDTO<SendEmailDTO>) => Promise<void>> = {
   [EmailOpJobName.SendEmail]: emailService.sendEmail.bind(emailService),
@@ -27,8 +27,8 @@ const emailOpWorker = new Worker(
   }
 );
 
-emailOpWorker.on('failed', (job: Job, error: Error) => {
-  logger.error(`Email job ${job.name} with data ${JSON.stringify(job.data)} failed:`, error);
+emailOpWorker.on('failed', (job?: Job, error?: Error) => {
+  logger.error(`Email job ${job?.name} with data ${JSON.stringify(job?.data)} failed:`, error);
 });
 
 export default emailOpWorker;

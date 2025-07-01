@@ -1,8 +1,8 @@
 import { SendEmailDTO } from 'email-delivery-pkg';
 
 import EmailProviderStrategy from './email-provider.strategy';
-import mailgunApiService from '@services/email-provider/mailgun-api.service';
-import { InternalServerError } from '@common/errors';
+import mailgunApiService from '@/services/email-provider/mailgun-api.service';
+import { InternalServerError } from '@/common/errors';
 
 class MailgunStrategy extends EmailProviderStrategy {
   async sendEmail(data: SendEmailDTO): Promise<void> {

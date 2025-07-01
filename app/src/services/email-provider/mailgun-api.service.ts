@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import appConfig from '@config/app.config';
+import appConfig from '@/config/app.config';
 
 class MailgunApiService {
   async sendEmail(

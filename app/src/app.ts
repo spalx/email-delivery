@@ -2,8 +2,8 @@ import { IAppPkg } from 'app-life-cycle-pkg';
 import { CorrelatedRequestDTO, kafkaService } from 'kafka-pkg';
 import { SendEmailDTO, EmailDeliveryKafkaTopic } from 'email-delivery-pkg';
 
-import emailOpWorker from '@queues/workers/email-op.worker';
-import { SendEmailCommand } from '@commands/email';
+import emailOpWorker from '@/queues/workers/email-op.worker';
+import { SendEmailCommand } from '@/commands/email';
 
 class App implements IAppPkg {
   async init(): Promise<void> {

@@ -24,7 +24,6 @@ services:
       - ./bull_db_data:/data
     networks:
       - email-delivery-network
-      - kafka-network
     restart: unless-stopped
 
 networks:

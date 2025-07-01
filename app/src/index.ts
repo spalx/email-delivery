@@ -1,4 +1,3 @@
-import 'module-alias/register';
 import { logger } from 'common-loggers-pkg';
 import { appService } from 'app-life-cycle-pkg';
 import { kafkaService } from 'kafka-pkg';

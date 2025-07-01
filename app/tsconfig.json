@@ -1,30 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2022",
     "module": "CommonJS",
-    "moduleResolution": "Node",
-    "types": ["node"],
+    "lib": ["ES2022"],
     "strict": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "types": ["node"],
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "baseUrl": "./src",
-    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "outDir": "dist",
+    "baseUrl": ".",
     "paths": {
-      "@services/*": ["services/*"],
-      "@config/*": ["config/*"],
-      "@interfaces/*": ["interfaces/*"],
-      "@common/*": ["common/*"],
-      "@commands/*": ["commands/*"],
-      "@strategies/*": ["strategies/*"],
-      "@queues/*": ["queues/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "@types"],
+  "include": ["src", "index.ts"],
   "exclude": ["node_modules"]
 }

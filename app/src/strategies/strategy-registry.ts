@@ -1,4 +1,4 @@
-import BaseStrategy from '@strategies/base.strategy';
+import BaseStrategy from '@/strategies/base.strategy';
 
 class StrategyRegistry {
   private strategies;

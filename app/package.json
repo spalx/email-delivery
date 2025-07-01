@@ -3,22 +3,20 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
     "build": "tsc",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node -r tsconfig-paths/register' src/index.ts",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
     "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'"
   },
   "dependencies": {
-    "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.0",
-    "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.0",
-    "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.0.0",
-    "kafka-pkg": "git+git@github.com:spalx/kafka-pkg.git#1.0.0",
+    "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.3",
+    "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.1",
+    "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.0.2",
+    "kafka-pkg": "git+git@github.com:spalx/kafka-pkg.git#1.0.3",
     "axios": "^1.8.4",
     "bullmq": "^5.44.0",
-    "module-alias": "^2.2.3",
-    "reflect-metadata": "^0.2.2",
     "tsconfig-paths": "^4.2.0",
     "zod": "^3.25.49"
   },
@@ -31,14 +29,5 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.28.0"
-  },
-  "_moduleAliases": {
-    "@services": "src/services",
-    "@config": "src/config",
-    "@interfaces": "src/interfaces",
-    "@common": "src/common",
-    "@commands": "src/commands",
-    "@strategies": "src/strategies",
-    "@queues": "src/queues"
   }
 }
