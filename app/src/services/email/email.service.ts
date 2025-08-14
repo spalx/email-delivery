@@ -1,7 +1,6 @@
-import { SendEmailDTO, EmailDeliveryKafkaTopic } from 'email-delivery-pkg';
-import { CorrelatedRequestDTO, CorrelatedKafkaResponse, CorrelatedRequestDTOSchema } from 'kafka-pkg';
+import { SendEmailDTO, DidSendEmailDTO } from 'email-delivery-pkg';
+import { transportService, CorrelatedRequestDTO, CorrelatedRequestDTOSchema } from 'transport-pkg';
 import { logger } from 'common-loggers-pkg';
-import { ZodError } from 'zod';
 
 import strategyRegistry from '@/strategies/index';
 import { EmailProvider, SendEmailDTOSchema } from '@/common/constants';
@@ -9,7 +8,7 @@ import EmailProviderStrategy from '@/strategies/email-provider/email-provider.st
 
 class EmailService {
   async sendEmail(requestData: CorrelatedRequestDTO<SendEmailDTO>): Promise<void> {
-    const { data, correlation_id, request_id } = requestData;
+    const { action, data, correlation_id, request_id, transport_name } = requestData;
 
     let error: unknown | null = null;
 
@@ -26,17 +25,19 @@ class EmailService {
       logger.error(`Failed to send email to ${data.to}`, err);
       error = err;
     } finally {
-      const responseRequest: CorrelatedRequestDTO = {
+      const responseRequest: CorrelatedRequestDTO<DidSendEmailDTO> = {
         correlation_id,
         request_id,
+        action,
+        transport_name,
         data: {
+          // We don't want to send the full request data, because body can be too big
           to: data.to,
           subject: data.subject,
-        }
+        },
       };
 
-      const response = new CorrelatedKafkaResponse(EmailDeliveryKafkaTopic.SendEmail);
-      response.send(responseRequest, error);
+      transportService.sendResponse(responseRequest, error);
     }
   }
 }

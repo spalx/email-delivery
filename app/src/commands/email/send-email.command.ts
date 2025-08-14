@@ -1,5 +1,5 @@
 import { SendEmailDTO } from 'email-delivery-pkg';
-import { CorrelatedRequestDTO } from 'kafka-pkg';
+import { CorrelatedRequestDTO } from 'transport-pkg';
 
 import BaseCommand from '@/commands/base.command';
 import emailOpQueue from '@/queues/queues/email-op.queue';

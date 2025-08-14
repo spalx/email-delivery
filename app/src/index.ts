@@ -1,6 +1,6 @@
 import { logger } from 'common-loggers-pkg';
 import { appService } from 'app-life-cycle-pkg';
-import { kafkaService } from 'kafka-pkg';
+import { transportService } from 'transport-pkg';
 
 import app from './app';
 
@@ -9,7 +9,7 @@ async function startServer(): Promise<void> {
     logger.info('Starting email-delivery service');
 
     appService.use(app);
-    appService.use(kafkaService);
+    appService.use(transportService);
 
     await appService.run();
 

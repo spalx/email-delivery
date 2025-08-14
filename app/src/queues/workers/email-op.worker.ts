@@ -1,5 +1,5 @@
 import { Worker, Job } from 'bullmq';
-import { CorrelatedRequestDTO } from 'kafka-pkg';
+import { CorrelatedRequestDTO } from 'transport-pkg';
 import { SendEmailDTO } from 'email-delivery-pkg';
 import { logger } from 'common-loggers-pkg';
 

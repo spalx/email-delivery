@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import appConfig from '@/config/app.config';
 
 class MailgunApiService {
@@ -38,12 +36,20 @@ class MailgunApiService {
     }
 
     const headers = {
-      'Content-Type': 'multipart/form-data',
       Authorization:
-        'Basic ' + Buffer.from(appConfig.mailgun.username + ':' + appConfig.mailgun.key).toString('base64'),
+        'Basic ' + Buffer.from(`${appConfig.mailgun.username}:${appConfig.mailgun.key}`).toString('base64'),
     };
 
-    axios.post(appConfig.mailgun.url + '/messages', formData, { headers });
+    const response = await fetch(`${appConfig.mailgun.url}/messages`, {
+      method: 'POST',
+      headers,
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Mailgun API error: ${response.status} - ${errorText}`);
+    }
   }
 }
 
