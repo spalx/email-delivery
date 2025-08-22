@@ -7,6 +7,10 @@ services:
       - /app/node_modules
     depends_on:
       - email-delivery-bull-db
+    environment:
+      - PORT=3040
+      - BULL_DB_HOST=email-delivery-bull-db
+      - BULL_DB_PORT=6379
     env_file:
       - .env
     networks:

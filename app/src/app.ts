@@ -6,11 +6,12 @@ import { HTTPTransportAdapter } from 'http-transport-adapter';
 
 import SendEmailCommand from './commands/email/send-email.command';
 import emailOpWorker from '@/queues/workers/email-op.worker';
+import appConfig from '@/config/app.config';
 
 class App implements IAppPkg {
   async init(): Promise<void> {
     transportService.registerTransport(TransportAdapterName.Kafka, new KafkaTransportAdapter('kafka:9092', 'email-delivery'));
-    transportService.registerTransport(TransportAdapterName.HTTP, new HTTPTransportAdapter(3020));
+    transportService.registerTransport(TransportAdapterName.HTTP, new HTTPTransportAdapter(appConfig.app.port));
     transportService.transportsReceive(EmailDeliveryAction.SendEmail, async (data: CorrelatedRequestDTO) => {
       this.sendEmailMessageReceived(data);
     });
