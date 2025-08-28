@@ -14,7 +14,7 @@ class EmailController {
       CorrelatedRequestDTOSchema.parse(dto);
       SendEmailDTOSchema.parse(dto.data);
 
-      responseData = emailService.sendEmail(dto.data);
+      responseData = await emailService.sendEmail(dto.data);
     } catch (err) {
       logger.error(`Failed to send email to ${dto.data.to}`, err);
       error = err;
