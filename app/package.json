@@ -1,6 +1,6 @@
 {
   "name": "email-delivery",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
@@ -11,11 +11,11 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'"
   },
   "dependencies": {
-    "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.4",
+    "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.5",
     "bullmq": "^5.44.0",
-    "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.1",
+    "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.3",
     "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.0.4",
-    "http-transport-adapter": "git+git@github.com:spalx/http-transport-adapter.git#1.0.0",
+    "http-transport-adapter": "git+git@github.com:spalx/http-transport-adapter.git#1.0.1",
     "kafka-transport-adapter": "git+git@github.com:spalx/kafka-transport-adapter.git#1.0.3",
     "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.0.7",
     "tsconfig-paths": "^4.2.0",

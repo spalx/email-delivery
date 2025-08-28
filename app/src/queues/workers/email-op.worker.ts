@@ -5,10 +5,10 @@ import { logger } from 'common-loggers-pkg';
 
 import { bullDbConnection } from '@/config/db.config';
 import { QUEUE_EMAIL_OP, EmailOpJobName } from '@/common/constants';
-import emailService from '@/services/email/email.service';
+import emailController from '@/controllers/email.controller';
 
 const jobHandlers: Record<string, (data: CorrelatedRequestDTO<SendEmailDTO>) => Promise<void>> = {
-  [EmailOpJobName.SendEmail]: emailService.sendEmail.bind(emailService),
+  [EmailOpJobName.SendEmail]: emailController.sendEmail.bind(emailController),
 };
 
 const emailOpWorker = new Worker(
