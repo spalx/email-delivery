@@ -14,6 +14,7 @@ class EmailService {
 
     return {
       // We don't want to send the full request data, because body can be too big
+      from: data.from,
       to: data.to,
       subject: data.subject,
     };

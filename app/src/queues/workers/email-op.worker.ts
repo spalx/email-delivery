@@ -1,5 +1,5 @@
 import { Worker, Job } from 'bullmq';
-import { CorrelatedRequestDTO } from 'transport-pkg';
+import { CorrelatedMessage } from 'transport-pkg';
 import { SendEmailDTO } from 'email-delivery-pkg';
 import { logger } from 'common-loggers-pkg';
 
@@ -7,7 +7,7 @@ import { bullDbConnection } from '@/config/db.config';
 import { QUEUE_EMAIL_OP, EmailOpJobName } from '@/common/constants';
 import emailController from '@/controllers/email.controller';
 
-const jobHandlers: Record<string, (data: CorrelatedRequestDTO<SendEmailDTO>) => Promise<void>> = {
+const jobHandlers: Record<string, (req: CorrelatedMessage<SendEmailDTO>) => Promise<void>> = {
   [EmailOpJobName.SendEmail]: emailController.sendEmail.bind(emailController),
 };
 

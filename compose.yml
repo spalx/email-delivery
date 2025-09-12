@@ -11,6 +11,7 @@ services:
       - PORT=3040
       - BULL_DB_HOST=email-delivery-bull-db
       - BULL_DB_PORT=6379
+      - TRANSPORT_FOR_BROADCAST=Kafka
     env_file:
       - .env
     networks:

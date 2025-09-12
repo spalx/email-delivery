@@ -11,4 +11,7 @@ export interface IAppConfig {
     username: string;
     url: string;
   };
+  transport: {
+    for_broadcast: string;
+  };
 }

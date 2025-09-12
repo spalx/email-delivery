@@ -1,40 +1,35 @@
-import { SendEmailDTO, DidSendEmailDTO } from 'email-delivery-pkg';
-import { transportService, CorrelatedRequestDTO, CorrelatedRequestDTOSchema } from 'transport-pkg';
+import { SendEmailDTO, SendEmailDTOSchema, DidSendEmailDTO, EmailDeliveryAction } from 'email-delivery-pkg';
+import { CorrelatedMessage, TransportAdapterName, transportService } from 'transport-pkg';
 import { logger } from 'common-loggers-pkg';
 
-import { SendEmailDTOSchema } from '@/common/constants';
+import appConfig from '@/config/app.config';
 import emailService from '@/services/email/email.service';
 
 class EmailController {
-  async sendEmail(dto: CorrelatedRequestDTO<SendEmailDTO>): Promise<void> {
-    let error: unknown | null = null;
-    let responseData: DidSendEmailDTO | {} = {};
+  async sendEmail(req: CorrelatedMessage<SendEmailDTO>): Promise<void> {
+    let error: unknown | undefined;
+    let responseData: DidSendEmailDTO | undefined;
 
     try {
-      CorrelatedRequestDTOSchema.parse(dto);
-      SendEmailDTOSchema.parse(dto.data);
+      SendEmailDTOSchema.parse(req.data);
 
-      responseData = await emailService.sendEmail(dto.data);
+      responseData = await emailService.sendEmail(req.data);
     } catch (err) {
-      logger.error(`Failed to send email to ${dto.data.to}`, err);
+      logger.error(`Failed to send email to ${req.data.to}`, err);
       error = err;
     } finally {
-      this.sendResponseForRequest(dto, responseData, error);
+      const transportName: TransportAdapterName = appConfig.transport.for_broadcast as TransportAdapterName;
+
+      const response: CorrelatedMessage = CorrelatedMessage.create(
+        req.correlation_id,
+        EmailDeliveryAction.DidSendEmail,
+        transportName,
+        responseData,
+        error
+      );
+
+      await transportService.broadcast(response);
     }
-  }
-
-  private sendResponseForRequest(req: CorrelatedRequestDTO, responseData: object, error: unknown | null) {
-    const { action, data, correlation_id, request_id, transport_name } = req;
-
-    const responseRequest: CorrelatedRequestDTO = {
-      correlation_id,
-      request_id,
-      action,
-      transport_name,
-      data: responseData,
-    };
-
-    transportService.sendResponse(responseRequest, error);
   }
 }
 

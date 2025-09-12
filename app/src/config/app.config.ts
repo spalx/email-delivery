@@ -13,6 +13,9 @@ const appConfig: IAppConfig = {
     username: process.env.MAILGUN_USERNAME || '',
     url: process.env.MAILGUN_URL || '',
   },
+  transport: {
+    for_broadcast: process.env.TRANSPORT_FOR_BROADCAST || 'Kafka',
+  },
 };
 
 export default Object.freeze(appConfig);
