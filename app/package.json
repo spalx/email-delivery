@@ -14,7 +14,7 @@
     "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.5",
     "bullmq": "^5.44.0",
     "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.3",
-    "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.0.6",
+    "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.0.7",
     "http-transport-adapter": "git+git@github.com:spalx/http-transport-adapter.git#1.0.4",
     "kafka-transport-adapter": "git+git@github.com:spalx/kafka-transport-adapter.git#1.0.7",
     "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.1.5",
