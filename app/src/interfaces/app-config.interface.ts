@@ -1,6 +1,7 @@
 export interface IAppConfig {
   app: {
     port: number;
+    host: string;
   };
   bullDb: {
     host: string;
