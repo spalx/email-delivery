@@ -1,10 +1,8 @@
 services:
   email-delivery:
-    build: .
-    command: npm run dev
-    volumes:
-      - ./app:/app
-      - /app/node_modules
+    build:
+      context: .
+      target: production
     depends_on:
       - email-delivery-bull-db
     environment:
@@ -17,14 +15,13 @@ services:
       - .env
     networks:
       - email-delivery-network
-      - public-network
     restart: unless-stopped
 
   email-delivery-bull-db:
     image: redis:latest
     command: ["redis-server", "--appendonly", "no", "--maxmemory-policy", "noeviction"]
     volumes:
-      - ./bull_db_data:/data
+      - email-delivery-bull-db-data:/data
     networks:
       - email-delivery-network
     restart: unless-stopped
@@ -32,5 +29,6 @@ services:
 networks:
   email-delivery-network:
     driver: bridge
-  public-network:
-    external: true
+
+volumes:
+  email-delivery-bull-db-data:

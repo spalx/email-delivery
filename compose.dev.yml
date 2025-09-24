@@ -1,0 +1,12 @@
+services:
+  email-delivery:
+    build:
+      context: .
+      target: builder
+    command: pnpm run dev
+    volumes:
+      - ./app:/app
+      - email-delivery-node-modules:/app/node_modules
+
+volumes:
+  email-delivery-node-modules:

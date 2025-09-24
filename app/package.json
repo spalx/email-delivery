@@ -1,11 +1,11 @@
 {
   "name": "email-delivery",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register src/index.ts",
-    "build": "tsc",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node -r tsconfig-paths/register' src/index.ts",
+    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "start": "node dist/index.js",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
     "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'"
@@ -14,20 +14,21 @@
     "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.5",
     "bullmq": "^5.44.0",
     "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.3",
-    "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.0.8",
+    "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.0.9",
     "http-transport-adapter": "git+git@github.com:spalx/http-transport-adapter.git#1.0.4",
     "kafka-transport-adapter": "git+git@github.com:spalx/kafka-transport-adapter.git#1.0.8",
     "service-discovery-pkg": "git+git@github.com:spalx/service-discovery-pkg.git#1.0.1",
-    "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.1.5",
-    "tsconfig-paths": "^4.2.0"
+    "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.1.5"
   },
   "devDependencies": {
-    "@types/node": "^22.13.10",
+    "@types/node": "^24.5.2",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.28.0"
   }

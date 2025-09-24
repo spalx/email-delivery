@@ -12,7 +12,7 @@ import appConfig from '@/config/app.config';
 class App implements IAppPkg {
   async init(): Promise<void> {
     transportService.registerTransport(TransportAdapterName.HTTP, new HTTPTransportAdapter(appConfig.app.port));
-    transportService.registerTransport(TransportAdapterName.Kafka, new KafkaTransportAdapter(appConfig.app.host));
+    transportService.registerTransport(TransportAdapterName.Kafka, new KafkaTransportAdapter(SERVICE_NAME));
 
     // Consume via HTTP
     transportService.setActionHandler(EmailDeliveryAction.SendEmail, async (req: CorrelatedMessage) => {
@@ -41,7 +41,7 @@ class App implements IAppPkg {
   }
 
   getPriority(): number {
-    return AppRunPriority.Low;
+    return AppRunPriority.High;
   }
 }
 
