@@ -10,9 +10,15 @@ import emailOpWorker from '@/queues/workers/email-op.worker';
 import appConfig from '@/config/app.config';
 
 class App implements IAppPkg {
-  async init(): Promise<void> {
-    transportService.registerTransport(TransportAdapterName.HTTP, new HTTPTransportAdapter(appConfig.app.port));
-    transportService.registerTransport(TransportAdapterName.Kafka, new KafkaTransportAdapter(SERVICE_NAME));
+  private httpTransportAdapter: HTTPTransportAdapter;
+  private kafkaTransportAdapter: KafkaTransportAdapter;
+
+  constructor() {
+    this.httpTransportAdapter = new HTTPTransportAdapter(appConfig.app.port);
+    this.kafkaTransportAdapter = new KafkaTransportAdapter(SERVICE_NAME);
+
+    transportService.registerTransport(TransportAdapterName.HTTP, this.httpTransportAdapter);
+    transportService.registerTransport(TransportAdapterName.Kafka, this.kafkaTransportAdapter);
 
     // Consume via HTTP
     transportService.setActionHandler(EmailDeliveryAction.SendEmail, async (req: CorrelatedMessage) => {
@@ -26,7 +32,9 @@ class App implements IAppPkg {
     transportService.setActionsToBroadcast([
       EmailDeliveryAction.DidSendEmail
     ]);
+  }
 
+  async init(): Promise<void> {
     // Make service discoverable by other services
     await serviceDiscoveryService.registerService({
       service_name: SERVICE_NAME,
@@ -42,6 +50,19 @@ class App implements IAppPkg {
 
   getPriority(): number {
     return AppRunPriority.High;
+  }
+
+  getName(): string {
+    return 'email-delivery';
+  }
+
+  getDependencies(): IAppPkg[] {
+    return [
+      transportService,
+      this.httpTransportAdapter,
+      this.kafkaTransportAdapter,
+      serviceDiscoveryService
+    ];
   }
 }
 

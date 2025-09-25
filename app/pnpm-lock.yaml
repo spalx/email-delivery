@@ -9,39 +9,39 @@ importers:
   .:
     dependencies:
       app-life-cycle-pkg:
-        specifier: git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.5
-        version: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952
+        specifier: git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.6
+        version: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
       bullmq:
         specifier: ^5.44.0
-        version: 5.58.5
+        version: 5.58.7
       common-loggers-pkg:
         specifier: git+git@github.com:spalx/common-loggers-pkg.git#1.0.3
-        version: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/892109d758b43df80b5b7679923a84a2d6eda620
+        version: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7
       email-delivery-pkg:
-        specifier: git+git@github.com:spalx/email-delivery-pkg.git#1.0.9
-        version: https://codeload.github.com/spalx/email-delivery-pkg/tar.gz/902be586f9a3a01ca9caeed3d3468ce414d8b0cd
+        specifier: git+git@github.com:spalx/email-delivery-pkg.git#1.1.0
+        version: https://codeload.github.com/spalx/email-delivery-pkg/tar.gz/08597965c426dab513f81a46725bebc51c1e67b6
       http-transport-adapter:
-        specifier: git+git@github.com:spalx/http-transport-adapter.git#1.0.4
-        version: https://codeload.github.com/spalx/http-transport-adapter/tar.gz/769c48d72cbd2d5022d93c0cbbc0a830ff927d16
+        specifier: git+git@github.com:spalx/http-transport-adapter.git#1.0.5
+        version: https://codeload.github.com/spalx/http-transport-adapter/tar.gz/d7dcdfd01086f36ae8606d6faa1e9f6eac5c0eec
       kafka-transport-adapter:
-        specifier: git+git@github.com:spalx/kafka-transport-adapter.git#1.0.8
-        version: https://codeload.github.com/spalx/kafka-transport-adapter/tar.gz/2e88f39c7fd2d7c7102f79dfafd537f3a704598d
+        specifier: git+git@github.com:spalx/kafka-transport-adapter.git#1.0.9
+        version: https://codeload.github.com/spalx/kafka-transport-adapter/tar.gz/9e51c3df174551d62278be95906b5761d8597cf8
       service-discovery-pkg:
-        specifier: git+git@github.com:spalx/service-discovery-pkg.git#1.0.1
-        version: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/8f13331723053d5283706abcf117d4fb312e41ca
+        specifier: git+git@github.com:spalx/service-discovery-pkg.git#1.0.2
+        version: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a
       transport-pkg:
-        specifier: git+git@github.com:spalx/transport-pkg.git#1.1.5
-        version: https://codeload.github.com/spalx/transport-pkg/tar.gz/8e26972a6c0f718a7b2dbf75a475ec93466e72fe
+        specifier: git+git@github.com:spalx/transport-pkg.git#1.1.6
+        version: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
     devDependencies:
       '@types/node':
         specifier: ^24.5.2
         version: 24.5.2
       eslint:
         specifier: ^9.23.0
-        version: 9.35.0
+        version: 9.36.0
       eslint-config-prettier:
         specifier: ^10.1.1
-        version: 10.1.8(eslint@9.35.0)
+        version: 10.1.8(eslint@9.36.0)
       nodemon:
         specifier: ^3.1.9
         version: 3.1.10
@@ -62,7 +62,7 @@ importers:
         version: 5.9.2
       typescript-eslint:
         specifier: ^8.28.0
-        version: 8.44.0(eslint@9.35.0)(typescript@5.9.2)
+        version: 8.44.1(eslint@9.36.0)(typescript@5.9.2)
 
 packages:
 
@@ -103,8 +103,8 @@ packages:
     resolution: {integrity: sha512-gtF186CXhIl1p4pJNGZw8Yc6RlshoePRvE0X91oPGb3vZ8pM3qOS9W9NGPat9LziaBV7XrJWGylNQXkGcnM3IQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/js@9.35.0':
-    resolution: {integrity: sha512-30iXE9whjlILfWobBkNerJo+TXYsgVM5ERQwMcMKCHckHflCmf7wXDAHlARoWnh0s1U72WqlbeyE7iAcCzuCPw==}
+  '@eslint/js@9.36.0':
+    resolution: {integrity: sha512-uhCbYtYynH30iZErszX78U+nR3pJU3RHGQ57NXy5QupD4SBVwDeU8TNBy+MjMngc1UyIW9noKqsRqfjQTBU2dw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/object-schema@2.1.6':
@@ -210,63 +210,63 @@ packages:
   '@types/triple-beam@1.3.5':
     resolution: {integrity: sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw==}
 
-  '@typescript-eslint/eslint-plugin@8.44.0':
-    resolution: {integrity: sha512-EGDAOGX+uwwekcS0iyxVDmRV9HX6FLSM5kzrAToLTsr9OWCIKG/y3lQheCq18yZ5Xh78rRKJiEpP0ZaCs4ryOQ==}
+  '@typescript-eslint/eslint-plugin@8.44.1':
+    resolution: {integrity: sha512-molgphGqOBT7t4YKCSkbasmu1tb1MgrZ2szGzHbclF7PNmOkSTQVHy+2jXOSnxvR3+Xe1yySHFZoqMpz3TfQsw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
-      '@typescript-eslint/parser': ^8.44.0
+      '@typescript-eslint/parser': ^8.44.1
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <6.0.0'
 
-  '@typescript-eslint/parser@8.44.0':
-    resolution: {integrity: sha512-VGMpFQGUQWYT9LfnPcX8ouFojyrZ/2w3K5BucvxL/spdNehccKhB4jUyB1yBCXpr2XFm0jkECxgrpXBW2ipoAw==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      eslint: ^8.57.0 || ^9.0.0
-      typescript: '>=4.8.4 <6.0.0'
-
-  '@typescript-eslint/project-service@8.44.0':
-    resolution: {integrity: sha512-ZeaGNraRsq10GuEohKTo4295Z/SuGcSq2LzfGlqiuEvfArzo/VRrT0ZaJsVPuKZ55lVbNk8U6FcL+ZMH8CoyVA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '>=4.8.4 <6.0.0'
-
-  '@typescript-eslint/scope-manager@8.44.0':
-    resolution: {integrity: sha512-87Jv3E+al8wpD+rIdVJm/ItDBe/Im09zXIjFoipOjr5gHUhJmTzfFLuTJ/nPTMc2Srsroy4IBXwcTCHyRR7KzA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/tsconfig-utils@8.44.0':
-    resolution: {integrity: sha512-x5Y0+AuEPqAInc6yd0n5DAcvtoQ/vyaGwuX5HE9n6qAefk1GaedqrLQF8kQGylLUb9pnZyLf+iEiL9fr8APDtQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '>=4.8.4 <6.0.0'
-
-  '@typescript-eslint/type-utils@8.44.0':
-    resolution: {integrity: sha512-9cwsoSxJ8Sak67Be/hD2RNt/fsqmWnNE1iHohG8lxqLSNY8xNfyY7wloo5zpW3Nu9hxVgURevqfcH6vvKCt6yg==}
+  '@typescript-eslint/parser@8.44.1':
+    resolution: {integrity: sha512-EHrrEsyhOhxYt8MTg4zTF+DJMuNBzWwgvvOYNj/zm1vnaD/IC5zCXFehZv94Piqa2cRFfXrTFxIvO95L7Qc/cw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <6.0.0'
 
-  '@typescript-eslint/types@8.44.0':
-    resolution: {integrity: sha512-ZSl2efn44VsYM0MfDQe68RKzBz75NPgLQXuGypmym6QVOWL5kegTZuZ02xRAT9T+onqvM6T8CdQk0OwYMB6ZvA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/typescript-estree@8.44.0':
-    resolution: {integrity: sha512-lqNj6SgnGcQZwL4/SBJ3xdPEfcBuhCG8zdcwCPgYcmiPLgokiNDKlbPzCwEwu7m279J/lBYWtDYL+87OEfn8Jw==}
+  '@typescript-eslint/project-service@8.44.1':
+    resolution: {integrity: sha512-ycSa60eGg8GWAkVsKV4E6Nz33h+HjTXbsDT4FILyL8Obk5/mx4tbvCNsLf9zret3ipSumAOG89UcCs/KRaKYrA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '>=4.8.4 <6.0.0'
 
-  '@typescript-eslint/utils@8.44.0':
-    resolution: {integrity: sha512-nktOlVcg3ALo0mYlV+L7sWUD58KG4CMj1rb2HUVOO4aL3K/6wcD+NERqd0rrA5Vg06b42YhF6cFxeixsp9Riqg==}
+  '@typescript-eslint/scope-manager@8.44.1':
+    resolution: {integrity: sha512-NdhWHgmynpSvyhchGLXh+w12OMT308Gm25JoRIyTZqEbApiBiQHD/8xgb6LqCWCFcxFtWwaVdFsLPQI3jvhywg==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@typescript-eslint/tsconfig-utils@8.44.1':
+    resolution: {integrity: sha512-B5OyACouEjuIvof3o86lRMvyDsFwZm+4fBOqFHccIctYgBjqR3qT39FBYGN87khcgf0ExpdCBeGKpKRhSFTjKQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '>=4.8.4 <6.0.0'
+
+  '@typescript-eslint/type-utils@8.44.1':
+    resolution: {integrity: sha512-KdEerZqHWXsRNKjF9NYswNISnFzXfXNDfPxoTh7tqohU/PRIbwTmsjGK6V9/RTYWau7NZvfo52lgVk+sJh0K3g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <6.0.0'
 
-  '@typescript-eslint/visitor-keys@8.44.0':
-    resolution: {integrity: sha512-zaz9u8EJ4GBmnehlrpoKvj/E3dNbuQ7q0ucyZImm3cLqJ8INTc970B1qEqDX/Rzq65r3TvVTN7kHWPBoyW7DWw==}
+  '@typescript-eslint/types@8.44.1':
+    resolution: {integrity: sha512-Lk7uj7y9uQUOEguiDIDLYLJOrYHQa7oBiURYVFqIpGxclAFQ78f6VUOM8lI2XEuNOKNB7XuvM2+2cMXAoq4ALQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@typescript-eslint/typescript-estree@8.44.1':
+    resolution: {integrity: sha512-qnQJ+mVa7szevdEyvfItbO5Vo+GfZ4/GZWWDRRLjrxYPkhM+6zYB2vRYwCsoJLzqFCdZT4mEqyJoyzkunsZ96A==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '>=4.8.4 <6.0.0'
+
+  '@typescript-eslint/utils@8.44.1':
+    resolution: {integrity: sha512-DpX5Fp6edTlocMCwA+mHY8Mra+pPjRZ0TfHkXI8QFelIKcbADQz1LUPNtzOFUriBB2UYqw4Pi9+xV4w9ZczHFg==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
+      typescript: '>=4.8.4 <6.0.0'
+
+  '@typescript-eslint/visitor-keys@8.44.1':
+    resolution: {integrity: sha512-576+u0QD+Jp3tZzvfRfxon0EA2lzcDt3lhUbsC6Lgzy9x2VR4E+JUiNyGHi5T8vk0TV+fpJ5GLG1JsJuWCaKhw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   acorn-jsx@5.3.2:
@@ -294,9 +294,9 @@ packages:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
 
-  app-life-cycle-pkg@https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952:
-    resolution: {tarball: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952}
-    version: 1.0.5
+  app-life-cycle-pkg@https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab:
+    resolution: {tarball: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab}
+    version: 1.0.6
 
   arg@4.1.3:
     resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==}
@@ -332,8 +332,8 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  bullmq@5.58.5:
-    resolution: {integrity: sha512-0A6Qjxdn8j7aOcxfRZY798vO/aMuwvoZwfE6a9EOXHb1pzpBVAogsc/OfRWeUf+5wMBoYB5nthstnJo/zrQOeQ==}
+  bullmq@5.58.7:
+    resolution: {integrity: sha512-rqsKV/ip76wU90q7Cxpr1vS/6PYIVbhuzqr3wgILgjS6XbsnJtWyYrK23jqWHs9+m6/NXM4+62hyf8CSBpufAw==}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -385,8 +385,8 @@ packages:
     resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
     engines: {node: ^12.20.0 || >=14}
 
-  common-loggers-pkg@https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/892109d758b43df80b5b7679923a84a2d6eda620:
-    resolution: {tarball: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/892109d758b43df80b5b7679923a84a2d6eda620}
+  common-loggers-pkg@https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7:
+    resolution: {tarball: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7}
     version: 1.0.3
 
   concat-map@0.0.1:
@@ -431,8 +431,8 @@ packages:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
     engines: {node: '>= 0.8'}
 
-  detect-libc@2.1.0:
-    resolution: {integrity: sha512-vEtk+OcP7VBRtQZ1EJ3bdgzSfBjgnEalLTp5zjJrS+2Z1w2KZly4SBdac/WDU3hhsNAZ9E8SC96ME4Ey8MZ7cg==}
+  detect-libc@2.1.1:
+    resolution: {integrity: sha512-ecqj/sy1jcK1uWrwpR67UhYrIFQ+5WlGxth34WquCbamhFA6hkkwiu37o6J5xCHdo1oixJRfVRw+ywV+Hq/0Aw==}
     engines: {node: '>=8'}
 
   diff@4.0.2:
@@ -450,9 +450,9 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  email-delivery-pkg@https://codeload.github.com/spalx/email-delivery-pkg/tar.gz/902be586f9a3a01ca9caeed3d3468ce414d8b0cd:
-    resolution: {tarball: https://codeload.github.com/spalx/email-delivery-pkg/tar.gz/902be586f9a3a01ca9caeed3d3468ce414d8b0cd}
-    version: 1.0.9
+  email-delivery-pkg@https://codeload.github.com/spalx/email-delivery-pkg/tar.gz/08597965c426dab513f81a46725bebc51c1e67b6:
+    resolution: {tarball: https://codeload.github.com/spalx/email-delivery-pkg/tar.gz/08597965c426dab513f81a46725bebc51c1e67b6}
+    version: 1.1.0
 
   enabled@2.0.0:
     resolution: {integrity: sha512-AKrN98kuwOzMIdAizXGI86UFBoo26CL21UM763y1h/GMSJ4/OHU9k2YlsmBpyScFo/wbLzWQJBMCW4+IO3/+OQ==}
@@ -491,8 +491,8 @@ packages:
     resolution: {integrity: sha512-Uhdk5sfqcee/9H/rCOJikYz67o0a2Tw2hGRPOG2Y1R2dg7brRe1uG0yaNQDHu+TO/uQPF/5eCapvYSmHUjt7JQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  eslint@9.35.0:
-    resolution: {integrity: sha512-QePbBFMJFjgmlE+cXAlbHZbHpdFVS2E/6vzCy7aKlebddvl1vadiC4JFV5u/wqTkNUwEV8WrQi257jf5f06hrg==}
+  eslint@9.36.0:
+    resolution: {integrity: sha512-hB4FIzXovouYzwzECDcUkJ4OcfOEkXTv2zRY6B9bkwjx/cprAq0uvm1nl7zvQ0/TsUk0zQiN4uPfJpB9m+rPMQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     hasBin: true
     peerDependencies:
@@ -623,9 +623,9 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  http-transport-adapter@https://codeload.github.com/spalx/http-transport-adapter/tar.gz/769c48d72cbd2d5022d93c0cbbc0a830ff927d16:
-    resolution: {tarball: https://codeload.github.com/spalx/http-transport-adapter/tar.gz/769c48d72cbd2d5022d93c0cbbc0a830ff927d16}
-    version: 1.0.4
+  http-transport-adapter@https://codeload.github.com/spalx/http-transport-adapter/tar.gz/d7dcdfd01086f36ae8606d6faa1e9f6eac5c0eec:
+    resolution: {tarball: https://codeload.github.com/spalx/http-transport-adapter/tar.gz/d7dcdfd01086f36ae8606d6faa1e9f6eac5c0eec}
+    version: 1.0.5
 
   ignore-by-default@1.0.1:
     resolution: {integrity: sha512-Ius2VYcGNk7T90CppJqcIkS5ooHUZyIQK+ClZfMfMNFEF9VSE73Fq+906u/CWu92x4gzZMWOwfFYckPObzdEbA==}
@@ -649,8 +649,8 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
-  ioredis@5.7.0:
-    resolution: {integrity: sha512-NUcA93i1lukyXU+riqEyPtSEkyFq8tX90uL659J+qpCZ3rEdViB/APC58oAhIh3+bJln2hzdlZbBZsGNrlsR8g==}
+  ioredis@5.8.0:
+    resolution: {integrity: sha512-AUXbKn9gvo9hHKvk6LbZJQSKn/qIfkWXrnsyL9Yrf+oeXmla9Nmf6XEumOddyhM8neynpK5oAV6r9r99KBuwzA==}
     engines: {node: '>=12.22.0'}
 
   is-arrayish@0.3.4:
@@ -697,9 +697,9 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  kafka-transport-adapter@https://codeload.github.com/spalx/kafka-transport-adapter/tar.gz/2e88f39c7fd2d7c7102f79dfafd537f3a704598d:
-    resolution: {tarball: https://codeload.github.com/spalx/kafka-transport-adapter/tar.gz/2e88f39c7fd2d7c7102f79dfafd537f3a704598d}
-    version: 1.0.8
+  kafka-transport-adapter@https://codeload.github.com/spalx/kafka-transport-adapter/tar.gz/9e51c3df174551d62278be95906b5761d8597cf8:
+    resolution: {tarball: https://codeload.github.com/spalx/kafka-transport-adapter/tar.gz/9e51c3df174551d62278be95906b5761d8597cf8}
+    version: 1.0.9
 
   kafkajs@2.2.4:
     resolution: {integrity: sha512-j/YeapB1vfPT2iOIUn/vxdyKEuhuY2PxMBvf5JWux6iSaukAccrMtXEY/Lb7OvavDhOWME589bpLrEdnVHjfjA==}
@@ -909,8 +909,8 @@ packages:
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
 
-  rest-pkg@https://codeload.github.com/spalx/rest-pkg/tar.gz/a7bd5782f7d5b5e1e7c8a268c8c1e659fd044989:
-    resolution: {tarball: https://codeload.github.com/spalx/rest-pkg/tar.gz/a7bd5782f7d5b5e1e7c8a268c8c1e659fd044989}
+  rest-pkg@https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47:
+    resolution: {tarball: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47}
     version: 1.0.3
 
   reusify@1.1.0:
@@ -935,9 +935,9 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  service-discovery-pkg@https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/8f13331723053d5283706abcf117d4fb312e41ca:
-    resolution: {tarball: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/8f13331723053d5283706abcf117d4fb312e41ca}
-    version: 1.0.1
+  service-discovery-pkg@https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a:
+    resolution: {tarball: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a}
+    version: 1.0.2
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -1010,9 +1010,9 @@ packages:
     resolution: {integrity: sha512-r0eojU4bI8MnHr8c5bNo7lJDdI2qXlWWJk6a9EAFG7vbhTjElYhBVS3/miuE0uOuoLdb8Mc/rVfsmm6eo5o9GA==}
     hasBin: true
 
-  transport-pkg@https://codeload.github.com/spalx/transport-pkg/tar.gz/8e26972a6c0f718a7b2dbf75a475ec93466e72fe:
-    resolution: {tarball: https://codeload.github.com/spalx/transport-pkg/tar.gz/8e26972a6c0f718a7b2dbf75a475ec93466e72fe}
-    version: 1.1.5
+  transport-pkg@https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc:
+    resolution: {tarball: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc}
+    version: 1.1.6
 
   triple-beam@1.4.1:
     resolution: {integrity: sha512-aZbgViZrg1QNcG+LULa7nhZpJTZSLm/mXnHXnbAbjmN5aSa0y7V+wvv6+4WaBtpISJzThKy+PIPxc1Nq1EJ9mg==}
@@ -1054,8 +1054,8 @@ packages:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
 
-  typescript-eslint@8.44.0:
-    resolution: {integrity: sha512-ib7mCkYuIzYonCq9XWF5XNw+fkj2zg629PSa9KNIQ47RXFF763S5BIX4wqz1+FLPogTZoiw8KmCiRPRa8bL3qw==}
+  typescript-eslint@8.44.1:
+    resolution: {integrity: sha512-0ws8uWGrUVTjEeN2OM4K1pLKHK/4NiNP/vz6ns+LjT/6sqpaYzIVFajZb1fj/IDwpsrrHb3Jy0Qm5u9CPcKaeg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -1082,8 +1082,8 @@ packages:
     resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
-  uuid@9.0.1:
-    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+  uuid@13.0.0:
+    resolution: {integrity: sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==}
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -1137,9 +1137,9 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@eslint-community/eslint-utils@4.9.0(eslint@9.35.0)':
+  '@eslint-community/eslint-utils@4.9.0(eslint@9.36.0)':
     dependencies:
-      eslint: 9.35.0
+      eslint: 9.36.0
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/regexpp@4.12.1': {}
@@ -1172,7 +1172,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@eslint/js@9.35.0': {}
+  '@eslint/js@9.36.0': {}
 
   '@eslint/object-schema@2.1.6': {}
 
@@ -1251,15 +1251,15 @@ snapshots:
 
   '@types/triple-beam@1.3.5': {}
 
-  '@typescript-eslint/eslint-plugin@8.44.0(@typescript-eslint/parser@8.44.0(eslint@9.35.0)(typescript@5.9.2))(eslint@9.35.0)(typescript@5.9.2)':
+  '@typescript-eslint/eslint-plugin@8.44.1(@typescript-eslint/parser@8.44.1(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0)(typescript@5.9.2)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
-      '@typescript-eslint/parser': 8.44.0(eslint@9.35.0)(typescript@5.9.2)
-      '@typescript-eslint/scope-manager': 8.44.0
-      '@typescript-eslint/type-utils': 8.44.0(eslint@9.35.0)(typescript@5.9.2)
-      '@typescript-eslint/utils': 8.44.0(eslint@9.35.0)(typescript@5.9.2)
-      '@typescript-eslint/visitor-keys': 8.44.0
-      eslint: 9.35.0
+      '@typescript-eslint/parser': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/scope-manager': 8.44.1
+      '@typescript-eslint/type-utils': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/utils': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/visitor-keys': 8.44.1
+      eslint: 9.36.0
       graphemer: 1.4.0
       ignore: 7.0.5
       natural-compare: 1.4.0
@@ -1268,56 +1268,56 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.44.0(eslint@9.35.0)(typescript@5.9.2)':
+  '@typescript-eslint/parser@8.44.1(eslint@9.36.0)(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/scope-manager': 8.44.0
-      '@typescript-eslint/types': 8.44.0
-      '@typescript-eslint/typescript-estree': 8.44.0(typescript@5.9.2)
-      '@typescript-eslint/visitor-keys': 8.44.0
+      '@typescript-eslint/scope-manager': 8.44.1
+      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/typescript-estree': 8.44.1(typescript@5.9.2)
+      '@typescript-eslint/visitor-keys': 8.44.1
       debug: 4.4.3(supports-color@5.5.0)
-      eslint: 9.35.0
+      eslint: 9.36.0
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/project-service@8.44.0(typescript@5.9.2)':
+  '@typescript-eslint/project-service@8.44.1(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.44.0(typescript@5.9.2)
-      '@typescript-eslint/types': 8.44.0
+      '@typescript-eslint/tsconfig-utils': 8.44.1(typescript@5.9.2)
+      '@typescript-eslint/types': 8.44.1
       debug: 4.4.3(supports-color@5.5.0)
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/scope-manager@8.44.0':
+  '@typescript-eslint/scope-manager@8.44.1':
     dependencies:
-      '@typescript-eslint/types': 8.44.0
-      '@typescript-eslint/visitor-keys': 8.44.0
+      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/visitor-keys': 8.44.1
 
-  '@typescript-eslint/tsconfig-utils@8.44.0(typescript@5.9.2)':
+  '@typescript-eslint/tsconfig-utils@8.44.1(typescript@5.9.2)':
     dependencies:
       typescript: 5.9.2
 
-  '@typescript-eslint/type-utils@8.44.0(eslint@9.35.0)(typescript@5.9.2)':
+  '@typescript-eslint/type-utils@8.44.1(eslint@9.36.0)(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/types': 8.44.0
-      '@typescript-eslint/typescript-estree': 8.44.0(typescript@5.9.2)
-      '@typescript-eslint/utils': 8.44.0(eslint@9.35.0)(typescript@5.9.2)
+      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/typescript-estree': 8.44.1(typescript@5.9.2)
+      '@typescript-eslint/utils': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
       debug: 4.4.3(supports-color@5.5.0)
-      eslint: 9.35.0
+      eslint: 9.36.0
       ts-api-utils: 2.1.0(typescript@5.9.2)
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/types@8.44.0': {}
+  '@typescript-eslint/types@8.44.1': {}
 
-  '@typescript-eslint/typescript-estree@8.44.0(typescript@5.9.2)':
+  '@typescript-eslint/typescript-estree@8.44.1(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/project-service': 8.44.0(typescript@5.9.2)
-      '@typescript-eslint/tsconfig-utils': 8.44.0(typescript@5.9.2)
-      '@typescript-eslint/types': 8.44.0
-      '@typescript-eslint/visitor-keys': 8.44.0
+      '@typescript-eslint/project-service': 8.44.1(typescript@5.9.2)
+      '@typescript-eslint/tsconfig-utils': 8.44.1(typescript@5.9.2)
+      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/visitor-keys': 8.44.1
       debug: 4.4.3(supports-color@5.5.0)
       fast-glob: 3.3.3
       is-glob: 4.0.3
@@ -1328,20 +1328,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.44.0(eslint@9.35.0)(typescript@5.9.2)':
+  '@typescript-eslint/utils@8.44.1(eslint@9.36.0)(typescript@5.9.2)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.0(eslint@9.35.0)
-      '@typescript-eslint/scope-manager': 8.44.0
-      '@typescript-eslint/types': 8.44.0
-      '@typescript-eslint/typescript-estree': 8.44.0(typescript@5.9.2)
-      eslint: 9.35.0
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.36.0)
+      '@typescript-eslint/scope-manager': 8.44.1
+      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/typescript-estree': 8.44.1(typescript@5.9.2)
+      eslint: 9.36.0
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/visitor-keys@8.44.0':
+  '@typescript-eslint/visitor-keys@8.44.1':
     dependencies:
-      '@typescript-eslint/types': 8.44.0
+      '@typescript-eslint/types': 8.44.1
       eslint-visitor-keys: 4.2.1
 
   acorn-jsx@5.3.2(acorn@8.15.0):
@@ -1370,9 +1370,9 @@ snapshots:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
-  app-life-cycle-pkg@https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952:
+  app-life-cycle-pkg@https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab:
     dependencies:
-      common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/892109d758b43df80b5b7679923a84a2d6eda620
+      common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7
     transitivePeerDependencies:
       - supports-color
 
@@ -1405,15 +1405,15 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  bullmq@5.58.5:
+  bullmq@5.58.7:
     dependencies:
       cron-parser: 4.9.0
-      ioredis: 5.7.0
+      ioredis: 5.8.0
       msgpackr: 1.11.5
       node-abort-controller: 3.1.1
       semver: 7.7.2
       tslib: 2.8.1
-      uuid: 9.0.1
+      uuid: 11.1.0
     transitivePeerDependencies:
       - supports-color
 
@@ -1477,7 +1477,7 @@ snapshots:
 
   commander@9.5.0: {}
 
-  common-loggers-pkg@https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/892109d758b43df80b5b7679923a84a2d6eda620:
+  common-loggers-pkg@https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7:
     dependencies:
       morgan: 1.10.1
       winston: 3.17.0
@@ -1515,7 +1515,7 @@ snapshots:
 
   depd@2.0.0: {}
 
-  detect-libc@2.1.0:
+  detect-libc@2.1.1:
     optional: true
 
   diff@4.0.2: {}
@@ -1532,12 +1532,12 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  email-delivery-pkg@https://codeload.github.com/spalx/email-delivery-pkg/tar.gz/902be586f9a3a01ca9caeed3d3468ce414d8b0cd:
+  email-delivery-pkg@https://codeload.github.com/spalx/email-delivery-pkg/tar.gz/08597965c426dab513f81a46725bebc51c1e67b6:
     dependencies:
-      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952
-      service-discovery-pkg: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/8f13331723053d5283706abcf117d4fb312e41ca
-      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/8e26972a6c0f718a7b2dbf75a475ec93466e72fe
-      uuid: 11.1.0
+      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
+      service-discovery-pkg: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a
+      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
+      uuid: 13.0.0
       zod: 3.25.76
     transitivePeerDependencies:
       - supports-color
@@ -1554,9 +1554,9 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-config-prettier@10.1.8(eslint@9.35.0):
+  eslint-config-prettier@10.1.8(eslint@9.36.0):
     dependencies:
-      eslint: 9.35.0
+      eslint: 9.36.0
 
   eslint-scope@8.4.0:
     dependencies:
@@ -1567,15 +1567,15 @@ snapshots:
 
   eslint-visitor-keys@4.2.1: {}
 
-  eslint@9.35.0:
+  eslint@9.36.0:
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.0(eslint@9.35.0)
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.36.0)
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.21.0
       '@eslint/config-helpers': 0.3.1
       '@eslint/core': 0.15.2
       '@eslint/eslintrc': 3.3.1
-      '@eslint/js': 9.35.0
+      '@eslint/js': 9.36.0
       '@eslint/plugin-kit': 0.3.5
       '@humanfs/node': 0.16.7
       '@humanwhocodes/module-importer': 1.0.1
@@ -1731,12 +1731,12 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  http-transport-adapter@https://codeload.github.com/spalx/http-transport-adapter/tar.gz/769c48d72cbd2d5022d93c0cbbc0a830ff927d16:
+  http-transport-adapter@https://codeload.github.com/spalx/http-transport-adapter/tar.gz/d7dcdfd01086f36ae8606d6faa1e9f6eac5c0eec:
     dependencies:
-      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952
-      common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/892109d758b43df80b5b7679923a84a2d6eda620
-      rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/a7bd5782f7d5b5e1e7c8a268c8c1e659fd044989
-      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/8e26972a6c0f718a7b2dbf75a475ec93466e72fe
+      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
+      common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7
+      rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47
+      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
     transitivePeerDependencies:
       - supports-color
 
@@ -1755,7 +1755,7 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  ioredis@5.7.0:
+  ioredis@5.8.0:
     dependencies:
       '@ioredis/commands': 1.4.0
       cluster-key-slot: 1.1.2
@@ -1799,13 +1799,13 @@ snapshots:
 
   json5@2.2.3: {}
 
-  kafka-transport-adapter@https://codeload.github.com/spalx/kafka-transport-adapter/tar.gz/2e88f39c7fd2d7c7102f79dfafd537f3a704598d:
+  kafka-transport-adapter@https://codeload.github.com/spalx/kafka-transport-adapter/tar.gz/9e51c3df174551d62278be95906b5761d8597cf8:
     dependencies:
-      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952
-      common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/892109d758b43df80b5b7679923a84a2d6eda620
+      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
+      common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7
       kafkajs: 2.2.4
-      service-discovery-pkg: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/8f13331723053d5283706abcf117d4fb312e41ca
-      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/8e26972a6c0f718a7b2dbf75a475ec93466e72fe
+      service-discovery-pkg: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a
+      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
     transitivePeerDependencies:
       - supports-color
 
@@ -1904,7 +1904,7 @@ snapshots:
 
   node-gyp-build-optional-packages@5.2.2:
     dependencies:
-      detect-libc: 2.1.0
+      detect-libc: 2.1.1
     optional: true
 
   nodemon@3.1.10:
@@ -2005,7 +2005,7 @@ snapshots:
 
   resolve-pkg-maps@1.0.0: {}
 
-  rest-pkg@https://codeload.github.com/spalx/rest-pkg/tar.gz/a7bd5782f7d5b5e1e7c8a268c8c1e659fd044989:
+  rest-pkg@https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47:
     dependencies:
       qs: 6.14.0
       zod: 3.25.76
@@ -2024,13 +2024,13 @@ snapshots:
 
   semver@7.7.2: {}
 
-  service-discovery-pkg@https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/8f13331723053d5283706abcf117d4fb312e41ca:
+  service-discovery-pkg@https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a:
     dependencies:
-      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952
-      common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/892109d758b43df80b5b7679923a84a2d6eda620
-      rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/a7bd5782f7d5b5e1e7c8a268c8c1e659fd044989
-      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/8e26972a6c0f718a7b2dbf75a475ec93466e72fe
-      uuid: 11.1.0
+      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
+      common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7
+      rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47
+      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
+      uuid: 13.0.0
       zod: 3.25.76
     transitivePeerDependencies:
       - supports-color
@@ -2107,11 +2107,11 @@ snapshots:
 
   touch@3.1.1: {}
 
-  transport-pkg@https://codeload.github.com/spalx/transport-pkg/tar.gz/8e26972a6c0f718a7b2dbf75a475ec93466e72fe:
+  transport-pkg@https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc:
     dependencies:
-      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/e1789110a5ed6b7c52ff54d6650d42539b9e9952
-      rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/a7bd5782f7d5b5e1e7c8a268c8c1e659fd044989
-      uuid: 11.1.0
+      app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
+      rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47
+      uuid: 13.0.0
       zod: 3.25.76
     transitivePeerDependencies:
       - supports-color
@@ -2162,13 +2162,13 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
 
-  typescript-eslint@8.44.0(eslint@9.35.0)(typescript@5.9.2):
+  typescript-eslint@8.44.1(eslint@9.36.0)(typescript@5.9.2):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.44.0(@typescript-eslint/parser@8.44.0(eslint@9.35.0)(typescript@5.9.2))(eslint@9.35.0)(typescript@5.9.2)
-      '@typescript-eslint/parser': 8.44.0(eslint@9.35.0)(typescript@5.9.2)
-      '@typescript-eslint/typescript-estree': 8.44.0(typescript@5.9.2)
-      '@typescript-eslint/utils': 8.44.0(eslint@9.35.0)(typescript@5.9.2)
-      eslint: 9.35.0
+      '@typescript-eslint/eslint-plugin': 8.44.1(@typescript-eslint/parser@8.44.1(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/parser': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/typescript-estree': 8.44.1(typescript@5.9.2)
+      '@typescript-eslint/utils': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
+      eslint: 9.36.0
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
@@ -2187,7 +2187,7 @@ snapshots:
 
   uuid@11.1.0: {}
 
-  uuid@9.0.1: {}
+  uuid@13.0.0: {}
 
   v8-compile-cache-lib@3.0.1: {}
 
