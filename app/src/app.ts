@@ -44,7 +44,7 @@ class App implements IAppPkg {
   }
 
   async shutdown(): Promise<void> {
-    await serviceDiscoveryService.deregisterService(appConfig.app.host);
+    await serviceDiscoveryService.deregisterService(SERVICE_NAME);
     await emailOpWorker.close();
   }
 
