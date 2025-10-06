@@ -1,6 +1,6 @@
 {
   "name": "email-delivery",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node -r tsconfig-paths/register' src/index.ts",
@@ -11,25 +11,25 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'"
   },
   "dependencies": {
-    "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.6",
-    "bullmq": "^5.44.0",
-    "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.3",
-    "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.1.1",
-    "http-transport-adapter": "git+git@github.com:spalx/http-transport-adapter.git#1.0.6",
-    "kafka-transport-adapter": "git+git@github.com:spalx/kafka-transport-adapter.git#1.1.0",
-    "service-discovery-pkg": "git+git@github.com:spalx/service-discovery-pkg.git#1.0.2",
-    "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.1.7"
+    "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.7",
+    "bullmq": "^5.61.0",
+    "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.4",
+    "email-delivery-pkg": "git+git@github.com:spalx/email-delivery-pkg.git#1.1.2",
+    "http-transport-adapter": "git+git@github.com:spalx/http-transport-adapter.git#1.0.7",
+    "kafka-transport-adapter": "git+git@github.com:spalx/kafka-transport-adapter.git#1.1.1",
+    "service-discovery-pkg": "git+git@github.com:spalx/service-discovery-pkg.git#1.0.3",
+    "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.1.8"
   },
   "devDependencies": {
-    "@types/node": "^24.5.2",
-    "eslint": "^9.23.0",
-    "eslint-config-prettier": "^10.1.1",
-    "nodemon": "^3.1.9",
-    "prettier": "^3.5.3",
+    "@types/node": "^24.7.0",
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.16",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.28.0"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.45.0"
   }
 }

@@ -3,9 +3,9 @@ import { EmailDeliveryAction, SendEmailDTO, SERVICE_NAME } from 'email-delivery-
 import { transportService, TransportAdapterName, CorrelatedMessage } from 'transport-pkg';
 import { HTTPTransportAdapter } from 'http-transport-adapter';
 import { KafkaTransportAdapter } from 'kafka-transport-adapter';
-import { serviceDiscoveryService, ServiceDTO } from 'service-discovery-pkg';
+import { serviceDiscoveryService } from 'service-discovery-pkg';
 
-import SendEmailCommand from './commands/email/send-email.command';
+import SendEmailCommand from '@/commands/email/send-email.command';
 import emailOpWorker from '@/queues/workers/email-op.worker';
 import appConfig from '@/config/app.config';
 
@@ -53,7 +53,7 @@ class App implements IAppPkg {
   }
 
   getName(): string {
-    return 'email-delivery';
+    return SERVICE_NAME;
   }
 
   getDependencies(): IAppPkg[] {
