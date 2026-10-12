@@ -1,12 +1,11 @@
 # Stage 1: Build
-FROM node:24-slim AS builder
-
-RUN apt-get update && apt-get install -y git \
-  && rm -rf /var/lib/apt/lists/*
+FROM node:24-alpine AS builder
 
 WORKDIR /app
 
-COPY ./app/package.json ./app/pnpm-lock.yaml ./
+RUN apk add --no-cache git libc6-compat tzdata
+
+COPY ./app/package.json ./app/pnpm-lock.yaml ./app/pnpm-workspace.yaml ./
 
 RUN --mount=type=cache,target=/root/.pnpm-store,id=pnpm-store \
     npm install -g pnpm && \
@@ -17,7 +16,7 @@ COPY ./app .
 RUN pnpm build
 
 # Stage 2: Production
-FROM node:24-slim AS production
+FROM node:24-alpine AS production
 
 WORKDIR /app
 

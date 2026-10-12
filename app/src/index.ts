@@ -1,5 +1,5 @@
-import { logger } from 'common-loggers-pkg';
-import { appService } from 'app-life-cycle-pkg';
+import { logger } from '@spalx/common-loggers-pkg';
+import { appService } from '@spalx/app-life-cycle-pkg';
 
 import app from './app';
 

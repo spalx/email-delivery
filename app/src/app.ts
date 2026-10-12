@@ -1,17 +1,22 @@
-import { IAppPkg, AppRunPriority } from 'app-life-cycle-pkg';
-import { EmailDeliveryAction, SendEmailDTO, SERVICE_NAME } from 'email-delivery-pkg';
-import { transportService, TransportAdapterName, CorrelatedMessage } from 'transport-pkg';
-import { HTTPTransportAdapter } from 'http-transport-adapter';
-import { KafkaTransportAdapter } from 'kafka-transport-adapter';
-import { serviceDiscoveryService } from 'service-discovery-pkg';
+import { IAppPkg, AppRunPriority } from '@spalx/app-life-cycle-pkg';
+import { EmailDeliveryAction, SendEmailDTO, SERVICE_NAME } from '@spalx/email-delivery-pkg';
+import { transportService, TransportAdapterName, CorrelatedMessage } from '@spalx/transport-pkg';
+import { HTTPTransportAdapter } from '@spalx/http-transport-adapter';
+import { KafkaTransportAdapter } from '@spalx/kafka-transport-adapter';
+import { serviceDiscoveryService } from '@spalx/service-discovery-pkg';
 
 import SendEmailCommand from '@/commands/email/send-email.command';
 import emailOpWorker from '@/queues/workers/email-op.worker';
+import emailOpQueue from '@/queues/queues/email-op.queue';
 import appConfig from '@/config/app.config';
+import { logger } from '@spalx/common-loggers-pkg';
 
 class App implements IAppPkg {
   private httpTransportAdapter: HTTPTransportAdapter;
   private kafkaTransportAdapter: KafkaTransportAdapter;
+
+  private queues = [emailOpQueue];
+  private workers = [emailOpWorker];
 
   constructor() {
     this.httpTransportAdapter = new HTTPTransportAdapter(appConfig.app.port);
@@ -29,12 +34,16 @@ class App implements IAppPkg {
     });
 
     // Broadcast via Kafka
-    transportService.setActionsToBroadcast([
-      EmailDeliveryAction.DidSendEmail
-    ]);
+    transportService.setActionsToBroadcast([EmailDeliveryAction.DidSendEmail]);
   }
 
   async init(): Promise<void> {
+    this.queues.forEach((manager) => manager.initialize());
+    logger.info('All queues initialized successfully');
+
+    this.workers.forEach((manager) => manager.initialize());
+    logger.info('All workers started polling safely');
+
     // Make service discoverable by other services
     await serviceDiscoveryService.registerService({
       service_name: SERVICE_NAME,
@@ -45,7 +54,9 @@ class App implements IAppPkg {
 
   async shutdown(): Promise<void> {
     await serviceDiscoveryService.deregisterService(SERVICE_NAME);
-    await emailOpWorker.close();
+    for (const worker of this.workers) {
+      await worker.close();
+    }
   }
 
   getPriority(): number {
@@ -57,12 +68,7 @@ class App implements IAppPkg {
   }
 
   getDependencies(): IAppPkg[] {
-    return [
-      transportService,
-      this.httpTransportAdapter,
-      this.kafkaTransportAdapter,
-      serviceDiscoveryService
-    ];
+    return [transportService, this.httpTransportAdapter, this.kafkaTransportAdapter, serviceDiscoveryService];
   }
 }
 

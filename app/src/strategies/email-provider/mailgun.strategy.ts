@@ -1,4 +1,4 @@
-import { SendEmailDTO } from 'email-delivery-pkg';
+import { SendEmailDTO } from '@spalx/email-delivery-pkg';
 
 import EmailProviderStrategy from './email-provider.strategy';
 import mailgunApiService from '@/services/email-provider/mailgun-api.service';

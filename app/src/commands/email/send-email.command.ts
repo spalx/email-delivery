@@ -1,5 +1,5 @@
-import { SendEmailDTO } from 'email-delivery-pkg';
-import { CorrelatedMessage } from 'transport-pkg';
+import { SendEmailDTO } from '@spalx/email-delivery-pkg';
+import { CorrelatedMessage } from '@spalx/transport-pkg';
 
 import BaseCommand from '@/commands/base.command';
 import emailOpQueue from '@/queues/queues/email-op.queue';

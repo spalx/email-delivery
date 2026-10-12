@@ -1,0 +1,10 @@
+minimumReleaseAgeExclude:
+  - '@spalx/app-life-cycle-pkg'
+  - '@spalx/common-loggers-pkg'
+  - '@spalx/email-delivery-pkg'
+  - '@spalx/http-transport-adapter'
+  - '@spalx/kafka-transport-adapter'
+  - '@spalx/service-discovery-pkg'
+  - '@spalx/transport-pkg'
+allowBuilds:
+  msgpackr-extract: true

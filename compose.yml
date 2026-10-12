@@ -1,5 +1,6 @@
 services:
   email-delivery:
+    mem_limit: 1g
     build:
       context: .
       target: production
@@ -12,8 +13,18 @@ services:
     restart: unless-stopped
 
   email-delivery-bull-db:
+    mem_limit: 512m
     image: redis:latest
-    command: ["redis-server", "--appendonly", "no", "--maxmemory-policy", "noeviction"]
+    command:
+      [
+        "redis-server",
+        "--appendonly",
+        "no",
+        "--maxmemory",
+        "384mb",
+        "--maxmemory-policy",
+        "noeviction",
+      ]
     volumes:
       - email-delivery-bull-db-data:/data
     networks:

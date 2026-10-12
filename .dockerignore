@@ -1,0 +1,9 @@
+# Installed in the builder stage; the host copy is built for the wrong platform
+app/node_modules
+
+# Produced by the builder stage
+app/dist
+
+.git
+.DS_Store
+*.log

@@ -1,4 +1,4 @@
-import { SendEmailDTO } from 'email-delivery-pkg';
+import { SendEmailDTO } from '@spalx/email-delivery-pkg';
 
 import BaseStrategy from '@/strategies/base.strategy';
 

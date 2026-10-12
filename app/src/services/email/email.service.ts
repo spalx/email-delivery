@@ -1,4 +1,4 @@
-import { SendEmailDTO, DidSendEmailDTO } from 'email-delivery-pkg';
+import { SendEmailDTO, DidSendEmailDTO } from '@spalx/email-delivery-pkg';
 
 import strategyRegistry from '@/strategies/index';
 import { EmailProvider } from '@/common/constants';

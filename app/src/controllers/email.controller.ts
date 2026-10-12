@@ -1,6 +1,6 @@
-import { SendEmailDTO, SendEmailDTOSchema, DidSendEmailDTO, EmailDeliveryAction } from 'email-delivery-pkg';
-import { CorrelatedMessage, TransportAdapterName, transportService } from 'transport-pkg';
-import { logger } from 'common-loggers-pkg';
+import { SendEmailDTO, SendEmailDTOSchema, DidSendEmailDTO, EmailDeliveryAction } from '@spalx/email-delivery-pkg';
+import { CorrelatedMessage, TransportAdapterName, transportService } from '@spalx/transport-pkg';
+import { logger } from '@spalx/common-loggers-pkg';
 
 import appConfig from '@/config/app.config';
 import emailService from '@/services/email/email.service';
