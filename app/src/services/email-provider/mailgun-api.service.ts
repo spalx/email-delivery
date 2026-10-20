@@ -1,6 +1,7 @@
 import appConfig from '@/config/app.config';
+import { MailgunClient } from '@/interfaces/mailgun-client.interface';
 
-class MailgunApiService {
+export class MailgunApiService implements MailgunClient {
   async sendEmail(
     from: string,
     to: string[],
@@ -35,21 +36,26 @@ class MailgunApiService {
       formData.append('inline', inline[attachmentName], attachmentName);
     }
 
-    const headers = {
-      Authorization:
-        'Basic ' + Buffer.from(`${appConfig.mailgun.username}:${appConfig.mailgun.key}`).toString('base64'),
-    };
-
-    const response = await fetch(`${appConfig.mailgun.url}/messages`, {
-      method: 'POST',
-      headers,
-      body: formData,
-    });
+    const response = await this.post(formData);
 
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error(`Mailgun API error: ${response.status} - ${errorText}`);
     }
+  }
+
+  // The only network call, so the fake replaces just this and the form building and reply check still run.
+  protected async post(form: FormData): Promise<Response> {
+    const headers = {
+      Authorization:
+        'Basic ' + Buffer.from(`${appConfig.mailgun.username}:${appConfig.mailgun.key}`).toString('base64'),
+    };
+
+    return fetch(`${appConfig.mailgun.url}/messages`, {
+      method: 'POST',
+      headers,
+      body: form,
+    });
   }
 }
 

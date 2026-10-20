@@ -4,6 +4,8 @@ const appConfig: IAppConfig = {
   app: {
     port: Number(process.env.PORT),
     host: process.env.HOST || 'email-delivery',
+    providers: process.env.PROVIDERS || '',
+    fake_providers_port: Number(process.env.FAKE_PROVIDERS_PORT),
   },
   bullDb: {
     host: process.env.BULL_DB_HOST || 'email-delivery-bull-db',

@@ -13,7 +13,7 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', { args: 'none', caughtErrors: 'none', varsIgnorePattern: '^_' }],
       '@typescript-eslint/no-empty-object-type': ['error', { allowInterfaces: 'always' }],
-      '@typescript-eslint/no-extraneous-class': ['error', { allowEmpty: true }]
-    }
+      '@typescript-eslint/no-extraneous-class': ['error', { allowEmpty: true }],
+    },
   }
 );

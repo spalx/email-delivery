@@ -10,10 +10,14 @@ import emailOpWorker from '@/queues/workers/email-op.worker';
 import emailOpQueue from '@/queues/queues/email-op.queue';
 import appConfig from '@/config/app.config';
 import { logger } from '@spalx/common-loggers-pkg';
+import { isFakeProviders } from '@/common/env';
+import { FakeProvidersServer } from '@/fake-providers/fake-providers.server';
 
 class App implements IAppPkg {
   private httpTransportAdapter: HTTPTransportAdapter;
   private kafkaTransportAdapter: KafkaTransportAdapter;
+  // The /_test endpoints exist only while PROVIDERS=fake.
+  private fakeProvidersServer: FakeProvidersServer | null = isFakeProviders() ? new FakeProvidersServer() : null;
 
   private queues = [emailOpQueue];
   private workers = [emailOpWorker];
@@ -68,7 +72,16 @@ class App implements IAppPkg {
   }
 
   getDependencies(): IAppPkg[] {
-    return [transportService, this.httpTransportAdapter, this.kafkaTransportAdapter, serviceDiscoveryService];
+    const dependencies: IAppPkg[] = [
+      transportService,
+      this.httpTransportAdapter,
+      this.kafkaTransportAdapter,
+      serviceDiscoveryService,
+    ];
+    if (this.fakeProvidersServer) {
+      dependencies.push(this.fakeProvidersServer);
+    }
+    return dependencies;
   }
 }
 

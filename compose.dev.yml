@@ -4,9 +4,13 @@ services:
       context: .
       target: builder
     command: pnpm run dev
+    ports:
+      - "127.0.0.1:3140:3140"
     volumes:
       - ./app:/app
       - email-delivery-node-modules:/app/node_modules
+    environment:
+      - NODE_ENV=development
 
 volumes:
   email-delivery-node-modules:

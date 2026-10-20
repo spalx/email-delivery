@@ -6,7 +6,7 @@
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "types": ["node"],
+    "types": ["node", "jest"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "declaration": true,
@@ -16,6 +16,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "index.ts"],
+  "include": ["src", "index.ts", "test", "jest.config.ts"],
   "exclude": ["node_modules"]
 }
