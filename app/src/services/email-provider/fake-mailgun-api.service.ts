@@ -1,6 +1,7 @@
 import { randomUUID } from 'crypto';
 import { logger } from '@spalx/common-loggers-pkg';
 
+import { MailgunSendOptions } from '@/interfaces/mailgun-client.interface';
 import { MailgunApiService } from './mailgun-api.service';
 
 export interface OutboxFile {
@@ -20,6 +21,9 @@ export interface OutboxEmail {
   body: string;
   attachments: OutboxFile[];
   inline: OutboxFile[];
+  // null when the request did not choose, so the Mailgun domain's setting would apply.
+  track_clicks: boolean | null;
+  variables: Record<string, string>;
   sent_at: string;
 }
 
@@ -38,6 +42,7 @@ function copyEmail(email: OutboxEmail): OutboxEmail {
     bcc: [...email.bcc],
     attachments: email.attachments.map((file) => ({ ...file })),
     inline: email.inline.map((file) => ({ ...file })),
+    variables: { ...email.variables },
   };
 }
 
@@ -56,9 +61,10 @@ export class FakeMailgunApiService extends MailgunApiService {
     inline: Record<string, Blob> = {},
     cc: string[] = [],
     bcc: string[] = [],
-    replyTo = ''
+    replyTo = '',
+    options: MailgunSendOptions = {}
   ): Promise<void> {
-    await super.sendEmail(from, to, subject, body, attachments, inline, cc, bcc, replyTo);
+    await super.sendEmail(from, to, subject, body, attachments, inline, cc, bcc, replyTo, options);
 
     const email: OutboxEmail = {
       id: randomUUID(),
@@ -71,6 +77,8 @@ export class FakeMailgunApiService extends MailgunApiService {
       body,
       attachments: describeFiles(attachments),
       inline: describeFiles(inline),
+      track_clicks: options.trackClicks ?? null,
+      variables: { ...options.variables },
       sent_at: new Date().toISOString(),
     };
     this.outbox.push(email);

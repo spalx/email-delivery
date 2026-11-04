@@ -27,7 +27,8 @@ class MailgunStrategy extends EmailProviderStrategy {
       toBlobs(data.inline),
       data.cc ?? [],
       data.bcc ?? [],
-      data.replyTo ?? ''
+      data.replyTo ?? '',
+      { trackClicks: data.trackClicks, variables: data.variables }
     );
   }
 }

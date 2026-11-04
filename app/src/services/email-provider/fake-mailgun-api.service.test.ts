@@ -1,6 +1,7 @@
 import { logger } from '@spalx/common-loggers-pkg';
 
 import fakeMailgunApiService from './fake-mailgun-api.service';
+import { MailgunApiService } from './mailgun-api.service';
 
 const ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 
@@ -65,6 +66,8 @@ describe('FakeMailgunApiService', () => {
           body: '<a href="https://example.test/reset/abc">Reset</a>',
           attachments: [{ filename: 'invoice.pdf', size: 2048, content_type: 'application/pdf' }],
           inline: [{ filename: 'logo.png', size: 3, content_type: 'image/png' }],
+          track_clicks: null,
+          variables: {},
           sent_at: '2026-10-20T10:00:00.000Z',
         },
       ]);
@@ -79,7 +82,58 @@ describe('FakeMailgunApiService', () => {
         reply_to: null,
         attachments: [],
         inline: [],
+        track_clicks: null,
+        variables: {},
       });
+    });
+
+    it.each([
+      ['off', false],
+      ['on', true],
+    ])('should record click tracking turned %s and the variables', async (_case, trackClicks) => {
+      // Act
+      await fakeMailgunApiService.sendEmail(
+        'billing@example.test',
+        ['a@example.test'],
+        'Invoice',
+        '<p>Hi</p>',
+        {},
+        {},
+        [],
+        [],
+        '',
+        { trackClicks, variables: { issuance_id: 'abc', attempt: '2' } }
+      );
+
+      // Assert
+      expect(fakeMailgunApiService.getOutbox()[0]).toMatchObject({
+        track_clicks: trackClicks,
+        variables: { issuance_id: 'abc', attempt: '2' },
+      });
+    });
+
+    it('should build the Mailgun form with click tracking and variables, as the real client does', async () => {
+      // Arrange
+      const realSend = jest.spyOn(MailgunApiService.prototype, 'sendEmail');
+      const options = { trackClicks: false, variables: { issuance_id: 'abc' } };
+
+      // Act
+      await fakeMailgunApiService.sendEmail(
+        'billing@example.test',
+        ['a@example.test'],
+        'Invoice',
+        '<p>Hi</p>',
+        {},
+        {},
+        [],
+        [],
+        '',
+        options
+      );
+
+      // Assert
+      expect(realSend.mock.calls[0][9]).toEqual(options);
+      realSend.mockRestore();
     });
 
     it('should log each send with its id and recipients', async () => {
@@ -127,12 +181,33 @@ describe('FakeMailgunApiService', () => {
       email.subject = 'changed';
       email.to.push('x@example.test');
       email.attachments.push({ filename: 'x', size: 1, content_type: '' });
+      email.variables.added = 'x';
 
       expect(fakeMailgunApiService.getOutbox()[0]).toMatchObject({
         subject: 'one',
         to: ['a@example.test'],
         attachments: [],
+        variables: {},
       });
+    });
+
+    it('should keep its own copy of the variables', async () => {
+      const variables: Record<string, string> = { issuance_id: 'abc' };
+      await fakeMailgunApiService.sendEmail(
+        'billing@example.test',
+        ['d@example.test'],
+        'four',
+        '<p>Hi</p>',
+        {},
+        {},
+        [],
+        [],
+        '',
+        { variables }
+      );
+      variables.issuance_id = 'changed';
+
+      expect(fakeMailgunApiService.getOutbox('d@example.test')[0].variables).toEqual({ issuance_id: 'abc' });
     });
 
     it('should keep its own copy of the recipient lists', async () => {

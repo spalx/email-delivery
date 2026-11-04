@@ -67,8 +67,20 @@ describe('MailgunStrategy - sendEmail', () => {
         ['cc@example.test'],
         ['bcc@example.test'],
         'support@example.test',
+        { trackClicks: undefined, variables: undefined },
       ],
     ]);
+  });
+
+  it('should pass click tracking and variables to the Mailgun API service', async () => {
+    // Act
+    await mailgunStrategy.sendEmail(
+      buildEmail({ trackClicks: false, variables: { issuance_id: 'abc', attempt: '2' } })
+    );
+
+    // Assert
+    const [call] = jest.mocked(mailgunApiService.sendEmail).mock.calls;
+    expect(call[9]).toStrictEqual({ trackClicks: false, variables: { issuance_id: 'abc', attempt: '2' } });
   });
 
   it('should decode each base64 file into a Blob of its content type, keeping its name', async () => {
@@ -97,7 +109,18 @@ describe('MailgunStrategy - sendEmail', () => {
     await mailgunStrategy.sendEmail(buildEmail());
 
     expect(jest.mocked(mailgunApiService.sendEmail).mock.calls).toEqual([
-      ['billing@example.test', ['a@example.test'], 'Invoice', '<p>Hi</p>', {}, {}, [], [], ''],
+      [
+        'billing@example.test',
+        ['a@example.test'],
+        'Invoice',
+        '<p>Hi</p>',
+        {},
+        {},
+        [],
+        [],
+        '',
+        { trackClicks: undefined, variables: undefined },
+      ],
     ]);
   });
 
@@ -117,6 +140,8 @@ describe('MailgunStrategy - sendEmail', () => {
       await mailgunStrategy.sendEmail(
         buildEmail({
           replyTo: 'support@example.test',
+          trackClicks: false,
+          variables: { issuance_id: 'abc' },
           attachments: {
             'a.pdf': { content_base64: Buffer.from('A').toString('base64'), content_type: 'application/pdf' },
           },
@@ -135,6 +160,7 @@ describe('MailgunStrategy - sendEmail', () => {
           [],
           [],
           'support@example.test',
+          { trackClicks: false, variables: { issuance_id: 'abc' } },
         ],
       ]);
       expect(mailgunApiService.sendEmail).not.toHaveBeenCalled();

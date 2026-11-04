@@ -1,3 +1,8 @@
+export interface MailgunSendOptions {
+  trackClicks?: boolean;
+  variables?: Record<string, string>;
+}
+
 export interface MailgunClient {
   sendEmail(
     from: string,
@@ -8,6 +13,7 @@ export interface MailgunClient {
     inline?: Record<string, Blob>,
     cc?: string[],
     bcc?: string[],
-    replyTo?: string
+    replyTo?: string,
+    options?: MailgunSendOptions
   ): Promise<void>;
 }

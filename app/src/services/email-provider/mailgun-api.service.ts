@@ -1,5 +1,5 @@
 import appConfig from '@/config/app.config';
-import { MailgunClient } from '@/interfaces/mailgun-client.interface';
+import { MailgunClient, MailgunSendOptions } from '@/interfaces/mailgun-client.interface';
 
 export class MailgunApiService implements MailgunClient {
   async sendEmail(
@@ -11,7 +11,8 @@ export class MailgunApiService implements MailgunClient {
     inline: Record<string, Blob> = {},
     cc: string[] = [],
     bcc: string[] = [],
-    replyTo = ''
+    replyTo = '',
+    options: MailgunSendOptions = {}
   ): Promise<void> {
     const formData = new FormData();
     formData.append('from', from);
@@ -27,6 +28,16 @@ export class MailgunApiService implements MailgunClient {
     }
     formData.append('subject', subject);
     formData.append('html', body);
+
+    // Only when asked: otherwise the Mailgun domain's own tracking setting applies.
+    if (options.trackClicks !== undefined) {
+      formData.append('o:tracking-clicks', options.trackClicks ? 'yes' : 'no');
+    }
+
+    // Mailgun returns these on every delivery event for the message.
+    for (const [name, value] of Object.entries(options.variables ?? {})) {
+      formData.append(`v:${name}`, value);
+    }
 
     for (const attachmentName in attachments) {
       formData.append('attachment', attachments[attachmentName], attachmentName);

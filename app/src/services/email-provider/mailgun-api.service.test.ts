@@ -110,6 +110,55 @@ describe('MailgunApiService - sendEmail', () => {
     });
   });
 
+  describe('should_set_click_tracking_and_variables_only_when_the_caller_gives_them', () => {
+    function send(options: { trackClicks?: boolean; variables?: Record<string, string> }): Promise<void> {
+      return mailgunApiService.sendEmail(
+        'billing@example.test',
+        ['a@example.test'],
+        'Invoice',
+        '<p>Hi</p>',
+        {},
+        {},
+        [],
+        [],
+        '',
+        options
+      );
+    }
+
+    it('should turn click tracking off when the caller asks', async () => {
+      await send({ trackClicks: false });
+
+      expect(sentRequest().form.getAll('o:tracking-clicks')).toEqual(['no']);
+    });
+
+    it('should turn click tracking on when the caller asks', async () => {
+      await send({ trackClicks: true });
+
+      expect(sentRequest().form.getAll('o:tracking-clicks')).toEqual(['yes']);
+    });
+
+    it('should say nothing about click tracking when the caller does not ask', async () => {
+      await send({});
+
+      expect(sentRequest().form.get('o:tracking-clicks')).toBeNull();
+    });
+
+    it('should add each variable as its own v: field', async () => {
+      await send({ variables: { issuance_id: 'abc', attempt: '2' } });
+
+      const { form } = sentRequest();
+      expect(form.getAll('v:issuance_id')).toEqual(['abc']);
+      expect(form.getAll('v:attempt')).toEqual(['2']);
+    });
+
+    it('should add no v: field when the caller gives no variables', async () => {
+      await send({ variables: {} });
+
+      expect([...sentRequest().form.keys()].filter((key) => key.startsWith('v:'))).toEqual([]);
+    });
+  });
+
   describe('should_reject_when_mailgun_does_not_accept_the_email', () => {
     it('should reject with the status and the response text', async () => {
       jest.mocked(fetch).mockResolvedValueOnce(new Response('Forbidden', { status: 401 }));

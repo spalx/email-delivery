@@ -1,4 +1,10 @@
-import { EmailDeliveryAction, EmailFile, MAX_EMAIL_FILES_BYTES, SendEmailDTO } from '@spalx/email-delivery-pkg';
+import {
+  EmailDeliveryAction,
+  EmailFile,
+  MAX_EMAIL_FILES_BYTES,
+  MAX_EMAIL_VARIABLES_BYTES,
+  SendEmailDTO,
+} from '@spalx/email-delivery-pkg';
 import {
   CorrelatedMessage,
   ErrorCorrelatedMessage,
@@ -153,6 +159,67 @@ describe('EmailController - sendEmail', () => {
     ])('should not send an email with %s, and should broadcast a 400 saying why', async (_case, files, reason) => {
       // Arrange
       const email = { ...buildEmail(), ...files } as SendEmailDTO;
+
+      // Act
+      await expect(emailController.sendEmail(buildRequest(email))).resolves.toBeUndefined();
+
+      // Assert
+      expect(emailService.sendEmail).not.toHaveBeenCalled();
+      expect(broadcastMessages()[0]).toMatchObject({
+        correlation_id: CORRELATION_ID,
+        action: EmailDeliveryAction.DidSendEmail,
+        code: 400,
+        message: reason,
+      });
+    });
+  });
+
+  describe('should_send_an_email_with_click_tracking_and_variables_when_they_are_valid', () => {
+    it.each([
+      ['tracking off and two variables', { trackClicks: false, variables: { issuance_id: 'abc', attempt: '2' } }],
+      ['tracking on', { trackClicks: true }],
+      ['an empty value', { variables: { note: '' } }],
+      ['variables of exactly 4 KB', { variables: { a: 'x'.repeat(MAX_EMAIL_VARIABLES_BYTES - 1) } }],
+    ])('should send an email with %s', async (_case, options) => {
+      // Arrange
+      jest.mocked(emailService.sendEmail).mockResolvedValueOnce({ from: 'x', to: ['y'], subject: 'z' });
+      const email = buildEmail(options);
+
+      // Act
+      await emailController.sendEmail(buildRequest(email));
+
+      // Assert
+      expect(jest.mocked(emailService.sendEmail).mock.calls).toEqual([[email]]);
+      expect(broadcastMessages()[0].isError()).toBe(false);
+    });
+  });
+
+  describe('should_reject_click_tracking_and_variables_that_cannot_be_sent', () => {
+    it.each([
+      ['a value that is not a string', { variables: { attempt: 2 } }, 'each variables value must be a string'],
+      [
+        'a name with a space',
+        { variables: { 'issuance id': 'abc' } },
+        'variables names must be 1-64 letters, digits, _ or -',
+      ],
+      ['an empty name', { variables: { '': 'abc' } }, 'variables names must be 1-64 letters, digits, _ or -'],
+      [
+        'a name over 64 characters',
+        { variables: { ['n'.repeat(65)]: 'abc' } },
+        'variables names must be 1-64 letters, digits, _ or -',
+      ],
+      ['variables that are not an object', { variables: 'abc' }, 'variables must be an object'],
+      [
+        'variables over 4 KB',
+        { variables: { a: 'x'.repeat(MAX_EMAIL_VARIABLES_BYTES) } },
+        'variables must total at most 4 KB',
+      ],
+      // Two bytes per character as UTF-8, so 2,048 characters plus the name are 4,097 bytes.
+      ['multi-byte variables over 4 KB', { variables: { a: 'é'.repeat(2048) } }, 'variables must total at most 4 KB'],
+      ['click tracking that is not a boolean', { trackClicks: 'no' }, 'trackClicks must be a boolean'],
+    ])('should not send an email with %s, and should broadcast a 400 saying why', async (_case, options, reason) => {
+      // Arrange
+      const email = { ...buildEmail(), ...options } as unknown as SendEmailDTO;
 
       // Act
       await expect(emailController.sendEmail(buildRequest(email))).resolves.toBeUndefined();

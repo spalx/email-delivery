@@ -6,6 +6,8 @@ services:
       target: production
     depends_on:
       - email-delivery-bull-db
+    environment:
+      - NODE_ENV=production
     env_file:
       - .env
     networks:

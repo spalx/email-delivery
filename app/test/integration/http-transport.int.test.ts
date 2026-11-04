@@ -4,18 +4,14 @@ import type { IAppPkg } from '@spalx/app-life-cycle-pkg';
 import type { SendEmailDTO } from '@spalx/email-delivery-pkg';
 import type { CorrelatedMessage } from '@spalx/transport-pkg';
 
+import type { OutboxEmail } from '@/services/email-provider/fake-mailgun-api.service';
+
 type TransportPkg = typeof import('@spalx/transport-pkg');
 type EmailPkg = typeof import('@spalx/email-delivery-pkg');
 type AdapterPkg = typeof import('@spalx/http-transport-adapter');
 type LoggersPkg = typeof import('../mocks/common-loggers');
 
 jest.setTimeout(20_000);
-
-interface OutboxFile {
-  filename: string;
-  size: number;
-  content_type: string;
-}
 
 async function freePort(): Promise<number> {
   const server = net.createServer();
@@ -26,7 +22,9 @@ async function freePort(): Promise<number> {
 }
 
 // The global fetch is the no-network guard, so the test endpoints are called with node:http.
-function readOutbox(port: number): Promise<{ attachments: OutboxFile[]; inline: OutboxFile[] }[]> {
+function readOutbox(
+  port: number
+): Promise<Pick<OutboxEmail, 'attachments' | 'inline' | 'track_clicks' | 'variables'>[]> {
   return new Promise((resolve, reject) => {
     http
       .get({ host: '127.0.0.1', port, path: '/_test/outbox' }, (res) => {
@@ -167,5 +165,27 @@ describe('Email with files over the real HTTP transport and queue, into the fake
       )
     );
     expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it('records click tracking and the variables in the outbox', async () => {
+    // Arrange
+    const service = await startFakeService();
+
+    // Act
+    await service.send({
+      from: 'noreply@example.test',
+      to: ['user@example.test'],
+      subject: 'Your login link',
+      body: '<a href="https://example.test/login">Log in</a>',
+      trackClicks: false,
+      variables: { issuance_id: 'abc', attempt: '2' },
+    });
+    await waitFor(() => service.results().length === 1, 'the email to be sent');
+
+    // Assert
+    expect(service.results()[0].isError()).toBe(false);
+    const [email] = await readOutbox(service.fakePort);
+    expect(email.track_clicks).toBe(false);
+    expect(email.variables).toEqual({ issuance_id: 'abc', attempt: '2' });
   });
 });

@@ -144,6 +144,20 @@ describe('email queue against a real Redis', () => {
     expect([inline.name, inline.type, await inline.text()]).toEqual(['logo.png', 'image/png', 'PNG']);
   });
 
+  it('sends a queued email with click tracking off and variables to Mailgun as options', async () => {
+    const request = buildRequest(buildEmail({ trackClicks: false, variables: { issuance_id: 'abc', attempt: '2' } }));
+    mailgunAnswers(200);
+
+    await new SendEmailCommand().execute(request);
+    await waitFor(async () => broadcasts().length === 1 && (await jobsInRedis()) === 0, 'the email to be sent');
+
+    expect(broadcasts()[0].isError()).toBe(false);
+    const { form } = sentForm();
+    expect(form.getAll('o:tracking-clicks')).toEqual(['no']);
+    expect(form.getAll('v:issuance_id')).toEqual(['abc']);
+    expect(form.getAll('v:attempt')).toEqual(['2']);
+  });
+
   it('reports a request that fails validation without calling Mailgun, and leaves no job in Redis', async () => {
     const request = buildRequest(buildEmail({ from: '', to: [] }));
 
