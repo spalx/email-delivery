@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:24-alpine AS builder
+FROM node:26.13.0-alpine3.24 AS builder
 
 WORKDIR /app
 
@@ -22,7 +22,7 @@ RUN --mount=type=cache,target=/root/.pnpm-store,id=pnpm-store \
     pnpm prune --prod --store-dir=/root/.pnpm-store
 
 # Stage 3: Production
-FROM node:24-alpine AS production
+FROM node:26.13.0-alpine3.24 AS production
 
 WORKDIR /app
 

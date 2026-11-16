@@ -7,7 +7,7 @@ const redisAccess = new Queue('integration-test-reset', { connection: bullDbConn
 
 // Every test starts from an empty Redis, so no test sees jobs or keys another one left.
 beforeEach(async () => {
-  const client = await redisAccess.client;
+  const client = await redisAccess.getBackend().client;
   let cursor = '0';
   do {
     const [next, keys] = await client.scan(cursor, { COUNT: 1000 });

@@ -16,7 +16,7 @@ services:
 
   email-delivery-bull-db:
     mem_limit: 512m
-    image: redis:latest
+    image: redis:8.10.3
     command:
       [
         "redis-server",

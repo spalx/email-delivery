@@ -24,14 +24,15 @@
     "@spalx/kafka-transport-adapter": "1.1.6",
     "@spalx/service-discovery-pkg": "^1.0.8",
     "@spalx/transport-pkg": "^1.3.1",
-    "bullmq": "^5.61.0",
+    "bullmq": "^6.7.3",
+    "ioredis": "^5.10.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
     "@testcontainers/redis": "^12.2.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.7.0",
+    "@types/node": "^26.6.6",
     "eslint": "^9.37.0",
     "eslint-config-prettier": "^10.1.8",
     "jest": "^30.5.2",

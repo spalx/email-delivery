@@ -1,7 +1,7 @@
 import { RedisContainer, StartedRedisContainer } from '@testcontainers/redis';
 
 // A fixed major version, so every run tests against the same Redis.
-const REDIS_IMAGE = 'redis:8';
+const REDIS_IMAGE = 'redis:8.10.3';
 
 declare global {
   var __REDIS_CONTAINER__: StartedRedisContainer | undefined;
