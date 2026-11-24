@@ -91,7 +91,7 @@ describe('EmailController - sendEmail', () => {
       // Assert
       expect(emailService.sendEmail).not.toHaveBeenCalled();
       expect(logger.error).toHaveBeenCalledTimes(1);
-      expect(logger.error).toHaveBeenCalledWith(expect.any(String), expect.objectContaining({ name: 'ZodError' }));
+      expect(logger.error).toHaveBeenCalledWith(expect.stringContaining(CORRELATION_ID));
       const [message] = broadcastMessages();
       expect(message.isError()).toBe(true);
       expect(message).toMatchObject({
@@ -235,6 +235,21 @@ describe('EmailController - sendEmail', () => {
     });
   });
 
+  describe('should_log_a_failed_send_without_its_recipients', () => {
+    it('should name the correlation id and the number of recipients, never their addresses', async () => {
+      // Arrange
+      jest.mocked(emailService.sendEmail).mockRejectedValueOnce(new Error('Mailgun API error: 400 - Bad Request'));
+
+      // Act
+      await emailController.sendEmail(buildRequest(buildEmail({ to: ['dana@example.test', 'noa@example.test'] })));
+
+      // Assert
+      const logged = JSON.stringify(jest.mocked(logger.error).mock.calls);
+      expect(logged).toContain('2 recipient(s)');
+      expect(logged).not.toMatch(/dana@example\.test|noa@example\.test/);
+    });
+  });
+
   describe('should_broadcast_an_error_without_failing_when_mailgun_fails', () => {
     it('should log and broadcast a 500 with the Mailgun message', async () => {
       // Arrange
@@ -245,7 +260,9 @@ describe('EmailController - sendEmail', () => {
       await expect(emailController.sendEmail(buildRequest(buildEmail()))).resolves.toBeUndefined();
 
       // Assert
-      expect(jest.mocked(logger.error).mock.calls).toEqual([[expect.any(String), error]]);
+      expect(jest.mocked(logger.error).mock.calls).toEqual([
+        [`Failed to send email ${CORRELATION_ID} to 1 recipient(s): Mailgun API error: 401 - Forbidden`],
+      ]);
       const [message] = broadcastMessages();
       expect(message).toBeInstanceOf(ErrorCorrelatedMessage);
       expect(message).toMatchObject({

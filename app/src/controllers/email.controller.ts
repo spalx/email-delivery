@@ -15,7 +15,11 @@ class EmailController {
 
       responseData = await emailService.sendEmail(req.data);
     } catch (err) {
-      logger.error(`Failed to send email to ${req.data.to}`, err);
+      // The count, never the addresses: logs are kept apart from the data the emails were for.
+      const recipients = Array.isArray(req.data?.to) ? req.data.to.length : 0;
+      logger.error(
+        `Failed to send email ${req.correlation_id} to ${recipients} recipient(s): ${(err as Error)?.message ?? String(err)}`
+      );
       error = err;
     } finally {
       const transportName: TransportAdapterName = appConfig.transport.for_broadcast as TransportAdapterName;
